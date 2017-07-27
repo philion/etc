@@ -10,7 +10,10 @@ set -x
 home=$PWD
 
 # philstrap_home
-philstrap_home="$(cd "$(dirname "$0")"; pwd)"
+philstrap_home="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo $philstrap_home
+exit
 
 # setup all the links after the git clone
 

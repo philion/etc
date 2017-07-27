@@ -21,7 +21,7 @@ fi
 # for each file
 for file in $philstrap_home/bin/*
 do    
-    echo $file  
+    echo ... $file  
     
     if [ -e "$home/bin/$file" ]
     then
@@ -35,7 +35,7 @@ done
 # for each dotfile
 for file in $philstrap_home/dotfiles/dot.*
 do
-    echo $file  
+    echo . $file  
     
     name=$(basename "$file")
     dotname=".${name:4}"

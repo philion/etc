@@ -20,8 +20,7 @@ then
 fi
 
 # for each file
-echo bin files...
-for file in "$philstrap_home/bin/*"
+for file in $philstrap_home/bin/*
 do    
     name=$(basename "$file")
     target="$home/bin/$name"
@@ -38,8 +37,7 @@ do
 done
 
 # for each dotfile
-echo dot files...
-for file in "$philstrap_home/dotfiles/dot.*"
+for file in $philstrap_home/dotfiles/dot.*
 do    
     name=$(basename "$file")
     dotname=".${name:4}"

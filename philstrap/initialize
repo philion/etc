@@ -26,6 +26,8 @@ do
     name=$(basename "$file")
     target="$home/bin/$name"
     
+    echo "$file" "$target"
+    
     if [ -e "$target" ]
     then
         echo skipping $target
@@ -39,10 +41,11 @@ done
 echo dot files...
 for file in $philstrap_home/dotfiles/dot.*
 do    
-echo $file
     name=$(basename "$file")
     dotname=".${name:4}"
     target="$home/$dotname"
+    
+    echo "$file" "$target"
     
     if [ -f "$target" ]
     then

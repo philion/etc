@@ -1,7 +1,5 @@
 #!/bin/bash
 
-shopt -s nullglob
-
 # git clone git@github.com:philion/etc.git; etc/philstrap/initialize
 
 # a simple init script

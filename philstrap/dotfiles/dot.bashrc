@@ -55,8 +55,6 @@ alias more='less'
 alias whence='type -a'                        # where, of a sort
 alias grep='grep --color'                     # show differences in colour
 alias peek='mdfind -onlyin $PWD'
-alias ed='bbedit'
-alias diff='opendiff'
 #alias tail='multitail -f'
 alias ql='qlmanage -p "$@" >& /dev/null'
 alias gti=git
@@ -71,6 +69,8 @@ function wess {
 function jurl {
     curl -s $* | prettyj
 }
+
+alias jack='ack --java --ignore-dir=target -k $*'
 
 # Some shortcuts for different directory listings
 export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -89,8 +89,6 @@ alias psg='ps -ef | grep -i $*'
 # Some example functions
 function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
 
-alias jack='ack --java --ignore-dir=target -k $*'
-
 function prompt_command {
 
 TERMWIDTH=${COLUMNS}
@@ -103,7 +101,7 @@ usernam=$(whoami)
 cur_tty=$(tty | sed -e "s/.*tty\(.*\)/\1/")
 newPWD="${PWD}"
 timestr=$(date "+%a %b %d %H:%M")
-gitstr=$(__git_ps1)
+gitstr=""
 #   Add all the accessories below ...
 let promptsize=$(echo -n "  ${usernam}@${hostnam}:${newPWD}${timestr}${gitstr}" | wc -c | tr -d " ")
 let fillsize=${TERMWIDTH}-${promptsize}

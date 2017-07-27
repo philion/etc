@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# a simple init script
+
+# philstrap_home
+philstrap_home=`dirname $0`
+
+echo "The script you are running has basename `basename $0`, dirname `dirname $0`"
+echo "The present working directory is `pwd`"
+
+echo $philstrap_home
+
+exit
+
+# post-clone stage
+
+# setup all the links after the git clone.
+
+# clean-up clone
+
+# bin
+if [ -d "$HOME/bin" ]
+then
+    mv "$HOME/bin" "$HOME/bin.old"
+    
+    # fancy merge, later.
+fi
+
+ln -s "$philstrap_home/bin" "$HOME"
+

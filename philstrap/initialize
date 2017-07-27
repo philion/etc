@@ -8,11 +8,9 @@
 home=$PWD
 
 # philstrap_home
-philstrap_home=$(dirname "$0")
+philstrap_home="$(cd "$(dirname "$0")"; pwd)"
 
-# post-clone stage
-
-# setup all the links after the git clone.
+# setup all the links after the git clone
 
 # bin
 if [ ! -e "$home/bin" ]
@@ -23,10 +21,8 @@ fi
 # for each file
 for file in $philstrap_home/bin/*
 do    
-echo $file
     if [ -e "$home/bin/$file" ]
     then
-        #mv "$home/$dotname" "$home/dot$dotname"
         echo skipping $home/bin/$file
     else
         name=$(basename "$file")
@@ -39,7 +35,7 @@ for file in $philstrap_home/dotfiles/dot.*
 do
     name=$(basename "$file")
     dotname=".${name:4}"
-    echo $dotname
+    target=
     
     if [ -f "$home/$dotname" ]
     then

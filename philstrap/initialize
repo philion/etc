@@ -15,34 +15,43 @@ philstrap_home="$(cd "$(dirname "$0")"; pwd)"
 # bin
 if [ ! -e "$home/bin" ]
 then
+    echo making bin
     mkdir -p "$home/bin"
 fi
 
 # for each file
+echo bin files...
 for file in $philstrap_home/bin/*
 do    
-    if [ -f "$home/bin/$file" ]
+    name=$(basename "$file")
+    target="$home/bin/$name"
+    
+    if [ -e "$target" ]
     then
-        echo skipping $home/bin/$file
+        echo skipping $target
     else
-        name=$(basename "$file")
-        echo "$file" -> "$home/bin/$name"
-        ln -s "$file" "$home/bin/$name"
+        echo "$file" -> "$target"
+        ln -s "$file" "$target"
     fi
 done
 
 # for each dotfile
+echo dot files...
 for file in $philstrap_home/dotfiles/dot.*
 do    
+echo $file
     name=$(basename "$file")
     dotname=".${name:4}"
+    target="$home/$dotname"
     
-    if [ -f "$home/$dotname" ]
+    if [ -f "$target" ]
     then
-        mv "$home/$dotname" "$home/dot$dotname"
+        #mv "$home/$dotname" "$home/dot$dotname"
+        echo skipping "$target"
+    else
+        echo "$file" -> "$target"
+        ln -s "$file" "$target"
     fi
-    echo "$file" -> "$home/bin/$name"
-    ln -s "$file" "$home/$dotname"
 done
 
 # git clone git@github.com:philion/etc.git; etc/philstrap/initialize

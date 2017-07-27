@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x		
+
 # git clone git@github.com:philion/etc.git; etc/philstrap/initialize
 
 # a simple init script
@@ -25,13 +27,13 @@ do
     name=$(basename "$file")
     target="$home/bin/$name"
     
-    echo "$file" "$target"
+    #echo "$file" "$target"
     
     if [ -e "$target" ]
     then
         echo skipping $target
     else
-        echo "$file" -> "$target"
+        echo huh "$file" -> "$target"
     fi
 done
 
@@ -42,14 +44,14 @@ do
     dotname=".${name:4}"
     target="$home/$dotname"
     
-    echo "$file" "$target"
+    #echo "$file" "$target"
     
     if [ -f "$target" ]
     then
         #mv "$home/$dotname" "$home/dot$dotname"
         echo skipping "$target"
     else
-        echo "$file" -> "$target"
+        echo huh "$file" -> "$target"
     fi
 done
 

@@ -1,6 +1,5 @@
 #!/bin/bash
-
-set -x		
+#set -x		
 
 # git clone git@github.com:philion/etc.git; etc/philstrap/initialize
 
@@ -10,10 +9,9 @@ set -x
 home=$PWD
 
 # philstrap_home
-philstrap_home="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-echo $philstrap_home
-exit
+cd $(dirname "$0") >& /dev/null
+philstrap_home=$(pwd)
+cd - >& /dev/null
 
 # setup all the links after the git clone
 
@@ -36,7 +34,7 @@ do
     then
         echo skipping $target
     else
-        echo huh "$file" -> "$target"
+        ln -s "$file" "$target"
     fi
 done
 
@@ -51,10 +49,10 @@ do
     
     if [ -f "$target" ]
     then
-        #mv "$home/$dotname" "$home/dot$dotname"
-        echo skipping "$target"
+        mv "$home/$dotname" "$home/dot$dotname"
+        #echo skipping "$target"
     else
-        echo huh "$file" -> "$target"
+        ln -s "$file" "$target"
     fi
 done
 

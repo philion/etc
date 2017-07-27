@@ -29,14 +29,16 @@ echo $file
         #mv "$home/$dotname" "$home/dot$dotname"
         echo skipping $home/bin/$file
     else
-        ln -s "$file" "$home/bin/`filename $file`"
+        name=`filename $file`
+        ln -s "$file" "$home/bin/$name"
     fi
 done
 
 # for each dotfile
 for file in $philstrap_home/dotfiles/dot.*
 do
-    dotname=".${`filename $file`:4}"
+    name=`filename $file`
+    dotname=".${$name:4}"
     echo $dotname
     
     if [ -f "$home/$dotname" ]

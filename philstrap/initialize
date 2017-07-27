@@ -35,9 +35,10 @@ done
 # for each dotfile
 for file in $philstrap_home/dotfiles/dot.*
 do
+    echo $file  
+    
     name=$(basename "$file")
     dotname=".${name:4}"
-    target=
     
     if [ -f "$home/$dotname" ]
     then

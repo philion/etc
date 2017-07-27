@@ -21,29 +21,27 @@ fi
 # for each file
 for file in $philstrap_home/bin/*
 do    
-    echo ... $file  
-    
     if [ -e "$home/bin/$file" ]
     then
         echo skipping $home/bin/$file
     else
         name=$(basename "$file")
+        echo "$file" -> "$home/bin/$name"
         ln -s "$file" "$home/bin/$name"
     fi
 done
 
 # for each dotfile
 for file in $philstrap_home/dotfiles/dot.*
-do
-    echo . $file  
-    
+do    
     name=$(basename "$file")
     dotname=".${name:4}"
     
-    if [ -f "$home/$dotname" ]
+    if [ -e "$home/$dotname" ]
     then
         mv "$home/$dotname" "$home/dot$dotname"
     fi
+    echo "$file" -> "$home/bin/$name"
     ln -s "$file" "$home/$dotname"
 done
 

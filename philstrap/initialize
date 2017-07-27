@@ -8,7 +8,7 @@
 home=$PWD
 
 # philstrap_home
-philstrap_home=`dirname $0`
+philstrap_home=$(dirname "$0")
 
 # post-clone stage
 
@@ -29,7 +29,7 @@ echo $file
         #mv "$home/$dotname" "$home/dot$dotname"
         echo skipping $home/bin/$file
     else
-        name=`filename $file`
+        name=$(basename "$file")
         ln -s "$file" "$home/bin/$name"
     fi
 done
@@ -37,7 +37,7 @@ done
 # for each dotfile
 for file in $philstrap_home/dotfiles/dot.*
 do
-    name=`filename $file`
+    name=$(basename "$file")
     dotname=".${$name:4}"
     echo $dotname
     

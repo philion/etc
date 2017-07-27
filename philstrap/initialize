@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s nullglob
+
 # git clone git@github.com:philion/etc.git; etc/philstrap/initialize
 
 # a simple init script
@@ -21,7 +23,7 @@ fi
 
 # for each file
 echo bin files...
-for file in $philstrap_home/bin/*
+for file in "$philstrap_home/bin/*"
 do    
     name=$(basename "$file")
     target="$home/bin/$name"
@@ -39,7 +41,7 @@ done
 
 # for each dotfile
 echo dot files...
-for file in $philstrap_home/dotfiles/dot.*
+for file in "$philstrap_home/dotfiles/dot.*"
 do    
     name=$(basename "$file")
     dotname=".${name:4}"

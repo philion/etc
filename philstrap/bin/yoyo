@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo yoyo `dirname $0` `filename $0`

@@ -1,30 +1,49 @@
 #!/bin/bash
 
+# git clone git@github.com:philion/etc.git; etc/philstrap/initialize
+
 # a simple init script
+
+# home=$HOME
+home=$PWD
 
 # philstrap_home
 philstrap_home=`dirname $0`
-
-echo "The script you are running has basename `basename $0`, dirname `dirname $0`"
-echo "The present working directory is `pwd`"
-
-echo $philstrap_home
-
-exit
 
 # post-clone stage
 
 # setup all the links after the git clone.
 
-# clean-up clone
-
 # bin
-if [ -d "$HOME/bin" ]
+if [ ! -e "$home/bin" ]
 then
-    mv "$HOME/bin" "$HOME/bin.old"
-    
-    # fancy merge, later.
+    mkdir -p "$home/bin"
 fi
 
-ln -s "$philstrap_home/bin" "$HOME"
+# for each file
+for file in $philstrap_home/bin/*
+do    
+    if [ -e "$home/bin/$file"]
+    then
+        #mv "$home/$dotname" "$home/dot$dotname"
+        echo skipping $home/bin/$file
+    else
+        ln -s "$file" "$home/$dotname"
+    fi
+    ln -s "$file" "$home/$dotname"
+done
 
+# for each dotfile
+for file in $philstrap_home/dotfiles/dot.*
+do
+    dotname=".${file:4}"
+    echo dotname
+    
+    if [ -f "$home/$dotname"]
+    then
+        mv "$home/$dotname" "$home/dot$dotname"
+    fi
+    ln -s "$file" "$home/$dotname"
+done
+
+# git clone git@github.com:philion/etc.git; etc/philstrap/initialize

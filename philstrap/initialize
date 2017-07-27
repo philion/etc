@@ -38,7 +38,7 @@ done
 for file in $philstrap_home/dotfiles/dot.*
 do
     name=$(basename "$file")
-    dotname=".${$name:4}"
+    dotname=".${name:4}"
     echo $dotname
     
     if [ -f "$home/$dotname" ]

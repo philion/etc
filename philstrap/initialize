@@ -31,7 +31,7 @@ do
         echo skipping $target
     else
         echo "$file" -> "$target"
-        ln -s "$file" "$target"
+        #ln -s "$file" "$target"
     fi
 done
 
@@ -50,7 +50,7 @@ echo $file
         echo skipping "$target"
     else
         echo "$file" -> "$target"
-        ln -s "$file" "$target"
+        #ln -s "$file" "$target"
     fi
 done
 
